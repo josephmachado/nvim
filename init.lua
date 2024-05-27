@@ -890,7 +890,19 @@ require('lazy').setup({
   -- Add quarto-nvim plugin
   {
     'quarto-dev/quarto-nvim',
-    requires = {
+    ft = { 'quarto' },
+    dev = false,
+    opts = {
+      lspFeatures = {
+        languages = { 'r', 'python', 'julia', 'bash', 'lua', 'html', 'dot', 'javascript', 'typescript', 'ojs' },
+      },
+      codeRunner = {
+        enabled = true,
+        default_method = 'slime',
+      },
+    },
+    dependencies = {
+      'jmbuhr/otter.nvim',
       'nvim-treesitter/nvim-treesitter', -- Optional, for syntax highlighting
       'neovim/nvim-lspconfig', -- Optional, for LSP support
       'hrsh7th/nvim-cmp', -- Optional, for autocompletion
