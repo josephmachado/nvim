@@ -911,6 +911,13 @@ require('lazy').setup({
       require('quarto').setup {}
     end,
   },
+  -- Add this to your lazy.nvim plugin configuration
+  {
+    'mzlogin/vim-markdown-toc',
+    config = function()
+      -- Optional: Set any configuration options here
+    end,
+  },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -963,3 +970,7 @@ vim.cmd 'highlight Pmenu guibg=none ctermbg=none'
 vim.cmd 'highlight PmenuSel guibg=none ctermbg=none'
 vim.cmd 'highlight PmenuSbar guibg=none ctermbg=none'
 vim.cmd 'highlight PmenuThumb guibg=none ctermbg=none'
+-- Example configuration in init.lua
+vim.g.vmt_auto_update_on_save = 1 -- Automatically update TOC on save
+vim.g.vmt_dont_insert_fence = 1 -- Do not insert HTML comment fence
+vim.g.vmt_fence_text = 'TOC' -- Custom text for the HTML comment fence
