@@ -951,27 +951,30 @@ require('lazy').setup({
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 -- Set the background to be transparent
-vim.cmd 'highlight Normal guibg=none ctermbg=none'
-vim.cmd 'highlight NonText guibg=none ctermbg=none'
-
--- Set the background to be transparent for all UI elements
-vim.cmd 'highlight Normal guibg=none ctermbg=none'
-vim.cmd 'highlight NonText guibg=none ctermbg=none'
-vim.cmd 'highlight LineNr guibg=none ctermbg=none'
-vim.cmd 'highlight Folded guibg=none ctermbg=none'
-vim.cmd 'highlight EndOfBuffer guibg=none ctermbg=none'
-vim.cmd 'highlight SignColumn guibg=none ctermbg=none'
-vim.cmd 'highlight VertSplit guibg=none ctermbg=none'
-vim.cmd 'highlight StatusLine guibg=none ctermbg=none'
-vim.cmd 'highlight StatusLineNC guibg=none ctermbg=none'
-vim.cmd 'highlight TabLineFill guibg=none ctermbg=none'
-vim.cmd 'highlight TabLine guibg=none ctermbg=none'
-vim.cmd 'highlight TabLineSel guibg=none ctermbg=none'
-vim.cmd 'highlight Pmenu guibg=none ctermbg=none'
-vim.cmd 'highlight PmenuSel guibg=none ctermbg=none'
-vim.cmd 'highlight PmenuSbar guibg=none ctermbg=none'
-vim.cmd 'highlight PmenuThumb guibg=none ctermbg=none'
+-- vim.cmd 'highlight Normal guibg=none ctermbg=none'
+-- vim.cmd 'highlight NonText guibg=none ctermbg=none'
+--
+-- -- Set the background to be transparent for all UI elements
+-- vim.cmd 'highlight Normal guibg=none ctermbg=none'
+-- vim.cmd 'highlight NonText guibg=none ctermbg=none'
+-- vim.cmd 'highlight LineNr guibg=none ctermbg=none'
+-- vim.cmd 'highlight Folded guibg=none ctermbg=none'
+-- vim.cmd 'highlight EndOfBuffer guibg=none ctermbg=none'
+-- vim.cmd 'highlight SignColumn guibg=none ctermbg=none'
+-- vim.cmd 'highlight VertSplit guibg=none ctermbg=none'
+-- vim.cmd 'highlight StatusLine guibg=none ctermbg=none'
+-- vim.cmd 'highlight StatusLineNC guibg=none ctermbg=none'
+-- vim.cmd 'highlight TabLineFill guibg=none ctermbg=none'
+-- vim.cmd 'highlight TabLine guibg=none ctermbg=none'
+-- vim.cmd 'highlight TabLineSel guibg=none ctermbg=none'
+-- vim.cmd 'highlight Pmenu guibg=none ctermbg=none'
+-- vim.cmd 'highlight PmenuSel guibg=none ctermbg=none'
+-- vim.cmd 'highlight PmenuSbar guibg=none ctermbg=none'
+-- vim.cmd 'highlight PmenuThumb guibg=none ctermbg=none'
 -- Example configuration in init.lua
 vim.g.vmt_auto_update_on_save = 1 -- Automatically update TOC on save
 vim.g.vmt_dont_insert_fence = 1 -- Do not insert HTML comment fence
 vim.g.vmt_fence_text = 'TOC' -- Custom text for the HTML comment fence
+-- For init.lua
+vim.o.foldmethod = 'indent'
+vim.o.foldlevel = 99
