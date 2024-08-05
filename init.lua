@@ -978,3 +978,5 @@ vim.g.vmt_fence_text = 'TOC' -- Custom text for the HTML comment fence
 -- For init.lua
 vim.o.foldmethod = 'indent'
 vim.o.foldlevel = 99
+
+
