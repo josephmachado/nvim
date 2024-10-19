@@ -920,6 +920,18 @@ require('lazy').setup({
     end,
   },
 
+  -- markdown preview
+  {
+    'toppair/peek.nvim',
+    event = { 'VeryLazy' },
+    build = 'deno task --quiet build:fast',
+    config = function()
+      require('peek').setup()
+      vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
+      vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
+    end,
+  },
+
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
@@ -978,5 +990,3 @@ vim.g.vmt_fence_text = 'TOC' -- Custom text for the HTML comment fence
 -- For init.lua
 vim.o.foldmethod = 'indent'
 vim.o.foldlevel = 99
-
-
