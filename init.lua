@@ -927,6 +927,13 @@ require('lazy').setup({
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+
+  {
+    'folke/zen-mode.nvim',
+    config = function()
+      require('zen-mode').setup {}
+    end,
+  },
   -- Add quarto-nvim plugin
   {
     'quarto-dev/quarto-nvim',
