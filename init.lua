@@ -441,6 +441,9 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
+  { { {
+    'junegunn/fzf.vim',
+  }, 'junegunn/fzf.vim.vim' }, 'junegunn/gv.vim' },
 
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
