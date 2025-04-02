@@ -441,9 +441,20 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
-  { { {
+  -- TODO: Use uv for python debug setup and ruff for python LSP
+  {
+    'mfussenegger/nvim-dap-python',
+  },
+  {
+    'mfussenegger/nvim-dap',
+  },
+  {
+    'junegunn/fzf',
+  },
+  {
     'junegunn/fzf.vim',
-  }, 'junegunn/fzf.vim.vim' }, 'junegunn/gv.vim' },
+  },
+  { 'junegunn/gv.vim' },
 
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
