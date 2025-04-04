@@ -624,11 +624,11 @@ require('lazy').setup({
         pyright = {
           vim.keymap.set('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts), -- Signature help in insert mode
         },
+        ruff = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         elixirls = {},
-        ruff = {}, -- ruff server for linting, formatting
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
@@ -1045,35 +1045,3 @@ vim.g.vmt_fence_text = 'TOC' -- Custom text for the HTML comment fence
 -- For init.lua
 vim.o.foldmethod = 'indent'
 vim.o.foldlevel = 99
-
--- Defer to pyright for textDocument/hover
--- After the servers are initialized, add your autocmd
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client == nil then
-      return
-    end
-    if client.name == 'ruff' then
-      -- Disable hover in favor of Pyright
-      client.server_capabilities.hoverProvider = false
-    end
-  end,
-  desc = 'LSP: Disable hover capability from Ruff',
-})
-
-require('lspconfig').pyright.setup {
-  settings = {
-    pyright = {
-      -- Using Ruff's import organizer
-      disableOrganizeImports = true,
-    },
-    python = {
-      analysis = {
-        -- Ignore all files for analysis to exclusively use Ruff for linting
-        ignore = { '*' },
-      },
-    },
-  },
-}
