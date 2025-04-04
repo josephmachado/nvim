@@ -449,6 +449,12 @@ require('lazy').setup({
     'mfussenegger/nvim-dap',
   },
   {
+    'sindrets/diffview.nvim',
+  },
+  {
+    'mfussenegger/nvim-dap',
+  },
+  {
     'junegunn/fzf',
   },
   {
