@@ -1045,3 +1045,16 @@ vim.g.vmt_fence_text = 'TOC' -- Custom text for the HTML comment fence
 -- For init.lua
 vim.o.foldmethod = 'indent'
 vim.o.foldlevel = 99
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.py',
+  callback = function()
+    vim.lsp.buf.format {
+      async = false,
+      filter = function(client)
+        -- Only use ruff_lsp for formatting
+        return client.name == 'ruff'
+      end,
+    }
+  end,
+})
