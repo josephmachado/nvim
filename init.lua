@@ -455,6 +455,12 @@ require('lazy').setup({
     'mfussenegger/nvim-dap',
   },
   {
+    'nvim-neotest/nvim-nio',
+  },
+  {
+    'rcarriga/nvim-dap-ui',
+  },
+  {
     'junegunn/fzf',
   },
   {
