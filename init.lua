@@ -446,9 +446,6 @@ require('lazy').setup({
     'mfussenegger/nvim-dap-python',
   },
   {
-    'mfussenegger/nvim-dap',
-  },
-  {
     'sindrets/diffview.nvim',
   },
   {
@@ -1064,3 +1061,109 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     }
   end,
 })
+
+-- Basic nvim-dap configuration
+local dap = require 'dap'
+
+-- Configure keymappings for debugging
+vim.keymap.set('n', '<F5>', function()
+  dap.continue()
+end)
+vim.keymap.set('n', '<F10>', function()
+  dap.step_over()
+end)
+vim.keymap.set('n', '<F11>', function()
+  dap.step_into()
+end)
+vim.keymap.set('n', '<F12>', function()
+  dap.step_out()
+end)
+vim.keymap.set('n', '<Leader>b', function()
+  dap.toggle_breakpoint()
+end)
+vim.keymap.set('n', '<Leader>B', function()
+  dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+end)
+vim.keymap.set('n', '<Leader>lp', function()
+  dap.set_breakpoint(nil, nil, vim.fn.input 'Log point message: ')
+end)
+vim.keymap.set('n', '<Leader>dr', function()
+  dap.repl.open()
+end)
+vim.keymap.set('n', '<Leader>dl', function()
+  dap.run_last()
+end)
+
+-- UI configuration for nvim-dap-ui
+local dapui = require 'dapui'
+dapui.setup {
+  icons = { expanded = '▾', collapsed = '▸' },
+  mappings = {
+    -- Use a table to apply multiple mappings
+    expand = { '<CR>', '<2-LeftMouse>' },
+    open = 'o',
+    remove = 'd',
+    edit = 'e',
+    repl = 'r',
+    toggle = 't',
+  },
+  layouts = {
+    {
+      elements = {
+        'scopes',
+        'breakpoints',
+        'stacks',
+        'watches',
+      },
+      size = 40,
+      position = 'left',
+    },
+    {
+      elements = {
+        'repl',
+        'console',
+      },
+      size = 10,
+      position = 'bottom',
+    },
+  },
+  floating = {
+    max_height = nil,
+    max_width = nil,
+    border = 'single',
+    mappings = {
+      close = { 'q', '<Esc>' },
+    },
+  },
+  windows = { indent = 1 },
+}
+
+-- Connect DAP UI with DAP events
+dap.listeners.after.event_initialized['dapui_config'] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated['dapui_config'] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited['dapui_config'] = function()
+  dapui.close()
+end
+
+-- Python specific configuration using nvim-dap-python
+local dap_python = require 'dap-python'
+
+-- Set the path to your debugpy installation
+-- Adjust the path to match your Python environment
+dap_python.setup 'uv' -- Replace with your Python path or system Python
+
+-- Configure Python test methods
+dap_python.test_runner = 'pytest'
+vim.keymap.set('n', '<Leader>dt', function()
+  dap_python.test_method()
+end)
+vim.keymap.set('n', '<Leader>dc', function()
+  dap_python.test_class()
+end)
+vim.keymap.set('n', '<Leader>ds', function()
+  dap_python.debug_selection()
+end)
