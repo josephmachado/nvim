@@ -441,7 +441,14 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
-  -- TODO: Use uv for python debug setup and ruff for python LSP
+  {
+    'olimorris/codecompanion.nvim',
+    config = true,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+  },
   {
     'mfussenegger/nvim-dap-python',
   },
@@ -1167,3 +1174,18 @@ end)
 vim.keymap.set('n', '<Leader>ds', function()
   dap_python.debug_selection()
 end)
+
+
+require("codecompanion").setup({
+  strategies = {
+    chat = {
+      adapter = "gemini",
+    },
+    inline = {
+      adapter = "gemini",
+    },
+    cmd = {
+      adapter = "gemini",
+    }
+  },
+})
