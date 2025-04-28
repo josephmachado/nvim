@@ -470,6 +470,7 @@ require('lazy').setup({
   {
     'junegunn/fzf.vim',
   },
+  { 'tpope/vim-fugitive' },
   { 'junegunn/gv.vim' },
 
   { -- LSP Configuration & Plugins
@@ -1174,18 +1175,17 @@ end)
 vim.keymap.set('n', '<Leader>ds', function()
   dap_python.debug_selection()
 end)
-
-
-require("codecompanion").setup({
-  strategies = {
-    chat = {
-      adapter = "gemini",
-    },
-    inline = {
-      adapter = "gemini",
-    },
-    cmd = {
-      adapter = "gemini",
-    }
-  },
-})
+--
+-- require('codecompanion').setup {
+--   strategies = {
+--     chat = {
+--       adapter = 'gemini',
+--     },
+--     inline = {
+--       adapter = 'gemini',
+--     },
+--     cmd = {
+--       adapter = 'gemini',
+--     },
+--   },
+-- }
