@@ -20,7 +20,29 @@ keys = {
     dependencies = {
       "jmbuhr/otter.nvim",
       "nvim-treesitter/nvim-treesitter",
+      "jpalardy/vim-slime",  -- Explicit dependency
     },
+
+config = function(_, opts)
+  require("quarto").setup(opts)
+  -- Keymaps to open terminals
+  vim.keymap.set("n", "<leader>ti", function()
+    vim.cmd("vsplit term://ipython")
+  end, { desc = "open ipython terminal" })
+  vim.keymap.set("n", "<leader>tr", function()
+    vim.cmd("vsplit term://R")
+  end, { desc = "open R terminal" })
+  -- Add runner keymaps
+  local runner = require("quarto.runner")
+  vim.keymap.set("n", "<localleader>rc", runner.run_cell,  { desc = "run cell", silent = true })
+  vim.keymap.set("n", "<localleader>ra", runner.run_above, { desc = "run cell and above", silent = true })
+  vim.keymap.set("n", "<localleader>rA", runner.run_all,   { desc = "run all cells", silent = true })
+  vim.keymap.set("n", "<localleader>rl", runner.run_line,  { desc = "run line", silent = true })
+  vim.keymap.set("v", "<localleader>r",  runner.run_range, { desc = "run visual range", silent = true })
+  vim.keymap.set("n", "<localleader>RA", function()
+    runner.run_all(true)
+  end, { desc = "run all cells of all languages", silent = true })
+end,
   },
 
 { -- send code from python/r/qmd documets to a terminal or REPL
