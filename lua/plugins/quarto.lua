@@ -91,6 +91,12 @@ end,
       end
       vim.keymap.set('n', '<leader>cm', mark_terminal, { desc = '[m]ark terminal' })
       vim.keymap.set('n', '<leader>cs', set_terminal, { desc = '[s]et terminal' })
+
+    -- Add slime send keymaps for actual range/line sending
+      vim.keymap.set('n', '<localleader>ss', '<Plug>SlimeParagraphSend', { desc = 'slime send paragraph' })
+      vim.keymap.set('n', '<localleader>sl', '<Plug>SlimeLineSend', { desc = 'slime send line' })
+      vim.keymap.set('x', '<localleader>s', '<Plug>SlimeRegionSend', { desc = 'slime send selection' })
+      vim.keymap.set('n', '<localleader>sc', '<Plug>SlimeConfig', { desc = 'slime config' })
     end,
   },
 
