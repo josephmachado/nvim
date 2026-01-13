@@ -26,9 +26,25 @@ keys = {
 config = function(_, opts)
   require("quarto").setup(opts)
   -- Keymaps to open terminals
-  vim.keymap.set("n", "<leader>ti", function()
-    vim.cmd("vsplit term://ipython")
-  end, { desc = "open ipython terminal" })
+  vim.keymap.set("n", "<leader>tp", function()
+  -- Look for common venv directories
+  local venv_paths = {
+    ".venv/bin/activate",
+    "../.venv/bin/activate",
+    "venv/bin/activate",
+    "env/bin/activate",
+  }
+  
+  local activate_cmd = ""
+  for _, path in ipairs(venv_paths) do
+    if vim.fn.filereadable(path) == 1 then
+      activate_cmd = "source " .. path .. " && "
+      break
+    end
+  end
+  
+  vim.cmd("vsplit term://" .. activate_cmd .. "python3")
+end, { desc = "open python terminal" })
   vim.keymap.set("n", "<leader>tr", function()
     vim.cmd("vsplit term://R")
   end, { desc = "open R terminal" })
