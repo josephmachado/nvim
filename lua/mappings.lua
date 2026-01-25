@@ -22,3 +22,13 @@ map("n", "<leader>sm", function()
     glob_pattern = '*.md'
   })
 end, { desc = "Search in markdown files" })
+
+-- add a word to Harper dictionary
+vim.keymap.set('n', '<leader>da', function()
+  local word = vim.fn.expand('<cword>')
+  local dict_path = vim.fn.expand('~/.config/harper-ls/dictionary.txt')
+  vim.fn.system('mkdir -p ~/.config/harper-ls')
+  vim.fn.system(string.format('echo "%s" >> %s', word, dict_path))
+  print('Added "' .. word .. '" to Harper dictionary')
+  vim.cmd('LspRestart harper_ls')
+end, { desc = 'Add word to Harper dictionary' })
