@@ -33,6 +33,8 @@ vim.keymap.set('n', '<leader>da', function()
   vim.cmd('LspRestart harper_ls')
 end, { desc = 'Add word to Harper dictionary' })
 
+map("n", "<leader>cd", "<cmd>CodeDiff<CR>", { desc = "Code Diffs" })
+
 map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Toggle breakpoint" })
 map("n", "<leader>dc", "<cmd>DapContinue<CR>", { desc = "Start/Continue debugging" })
 map("n", "<leader>di", "<cmd>DapStepInto<CR>", { desc = "Step into" })
