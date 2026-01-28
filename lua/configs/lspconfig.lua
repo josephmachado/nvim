@@ -6,6 +6,6 @@ vim.lsp.enable(servers)
 -- read :h vim.lsp.config for changing options of lsp servers 
 
 vim.lsp.config.harper_ls = {
-  filetypes = { "markdown", "qmd", "txt", "python", "sh" },
+  filetypes = { "markdown", "qmd", "txt", "python", "sh", "quarto" },
 }
 vim.lsp.enable("harper_ls")
