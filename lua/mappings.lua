@@ -45,3 +45,5 @@ map("n", "<leader>du", function() require("dapui").toggle() end, { desc = "Toggl
 map("n", "<leader>dtn", function() require("dap-python").test_method() end, { desc = "Debug nearest test" })
 map("n", "<leader>dtc", function() require("dap-python").test_class() end, { desc = "Debug test class" })
 map("n", "<leader>dtf", function() require("dap-python").test_file() end, { desc = "Debug test file" })
+
+vim.keymap.set('n', '<leader>tt', ':tabnew | term<CR>', { desc = 'Open terminal in new tab' })
