@@ -81,9 +81,9 @@ dev-up:
 dev-down:
     devcontainer down --workspace-folder . --config .devcontainer/nvim/devcontainer.json
 
-# Open nvim inside container
+# Open nvim inside container, run as uv if you have setup uv python libraries
 nvim *args:
-    devcontainer exec --workspace-folder . --config .devcontainer/nvim/devcontainer.json nvim {{args}}
+    devcontainer exec --workspace-folder . --config .devcontainer/nvim/devcontainer.json uv run nvim {{args}}
 ```
 
 ## Key Learnings
