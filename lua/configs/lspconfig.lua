@@ -31,3 +31,35 @@ vim.lsp.config.harper_ls = {
   filetypes = { "markdown", "qmd", "txt", "python", "sh", "quarto" },
 }
 vim.lsp.enable("harper_ls")
+
+-- ltex 
+vim.lsp.config.ltex = {
+  filetypes = { "markdown", "txt", "quarto", "qmd" },
+  settings = {
+    ltex = {
+      language = "en-US",
+      disabledRules = {},
+      additionalRules = {
+        enablePickyRules = true,
+        motherTongue = "en-US",
+      },
+      checkFrequency = "save",
+    },
+  },
+}
+vim.lsp.enable("ltex")
+
+-- vale linter for grammar 
+vim.lsp.config.vale_ls = {
+  cmd = { "/usr/local/bin/vale-ls" },
+  filetypes = { "markdown", "txt", "quarto", "qmd" },
+}
+vim.lsp.enable("vale_ls")
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.md", "*.qmd", "*.txt" },
+  callback = function()
+    vim.diagnostic.setqflist({ open = false })
+  end,
+})
+
