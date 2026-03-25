@@ -54,7 +54,7 @@ vim.lsp.config.vale_ls = {
   cmd = { "/usr/local/bin/vale-ls" },
   filetypes = { "markdown", "txt", "quarto", "qmd" },
 }
-vim.lsp.enable("vale_ls")
+--vim.lsp.enable("vale_ls")
 
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { "*.md", "*.qmd", "*.txt" },
