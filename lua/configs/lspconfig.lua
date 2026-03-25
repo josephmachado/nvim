@@ -27,10 +27,10 @@ vim.lsp.config.pyright = {
 }
 
 -- Harper LS
-vim.lsp.config.harper_ls = {
-  filetypes = { "markdown", "qmd", "txt", "python", "sh", "quarto" },
-}
-vim.lsp.enable("harper_ls")
+-- vim.lsp.config.harper_ls = {
+--   filetypes = { "markdown", "qmd", "txt", "python", "sh", "quarto" },
+-- }
+-- vim.lsp.enable("harper_ls")
 
 -- ltex 
 vim.lsp.config.ltex = {
@@ -50,11 +50,11 @@ vim.lsp.config.ltex = {
 vim.lsp.enable("ltex")
 
 -- vale linter for grammar 
-vim.lsp.config.vale_ls = {
-  cmd = { "/usr/local/bin/vale-ls" },
-  filetypes = { "markdown", "txt", "quarto", "qmd" },
-}
---vim.lsp.enable("vale_ls")
+-- vim.lsp.config.vale_ls = {
+--   cmd = { "/usr/local/bin/vale-ls" },
+--   filetypes = { "markdown", "txt", "quarto", "qmd" },
+-- }
+-- vim.lsp.enable("vale_ls")
 
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { "*.md", "*.qmd", "*.txt" },
