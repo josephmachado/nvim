@@ -46,4 +46,6 @@ map("n", "<leader>dtn", function() require("dap-python").test_method() end, { de
 map("n", "<leader>dtc", function() require("dap-python").test_class() end, { desc = "Debug test class" })
 map("n", "<leader>dtf", function() require("dap-python").test_file() end, { desc = "Debug test file" })
 
-vim.keymap.set('n', '<leader>tt', ':tabnew | term<CR>', { desc = 'Open terminal in new tab' })
+vim.keymap.set('n', '<leader>tt', ':tabnew | terminal fish<CR>', { desc = 'Open terminal in new tab' })
+vim.keymap.set("n", "<leader>h", ":split | terminal fish<CR>", { desc = "Terminal fish (horizontal)" })
+vim.keymap.set("n", "<leader>v", ":vsplit | terminal fish<CR>", { desc = "Terminal fish (vertical)" })
