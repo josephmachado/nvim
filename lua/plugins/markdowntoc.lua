@@ -1,3 +1,4 @@
 return {
- 'mzlogin/vim-markdown-toc' 
+ 'mzlogin/vim-markdown-toc',
+ ft = { 'markdown' },
 }
