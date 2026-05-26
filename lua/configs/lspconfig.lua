@@ -33,21 +33,21 @@ vim.lsp.config.pyright = {
 -- vim.lsp.enable("harper_ls")
 
 -- ltex 
-vim.lsp.config.ltex = {
-  filetypes = { "markdown", "txt", "quarto", "qmd" },
-  settings = {
-    ltex = {
-      language = "en-US",
-      disabledRules = {},
-      additionalRules = {
-        enablePickyRules = true,
-        motherTongue = "en-US",
-      },
-      checkFrequency = "save",
-    },
-  },
-}
-vim.lsp.enable("ltex")
+-- vim.lsp.config.ltex = {
+--   filetypes = { "markdown", "txt", "quarto", "qmd" },
+--   settings = {
+--     ltex = {
+--       language = "en-US",
+--       disabledRules = {},
+--       additionalRules = {
+--         enablePickyRules = true,
+--         motherTongue = "en-US",
+--       },
+--       checkFrequency = "save",
+--     },
+--   },
+-- }
+-- vim.lsp.enable("ltex")
 
 -- vale linter for grammar 
 -- vim.lsp.config.vale_ls = {
