@@ -41,3 +41,5 @@ vim.api.nvim_create_user_command('CleanSort', function()
   vim.cmd("'<,'>!sort | tr '[:upper:]' '[:lower:]' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | uniq -c | sort -nr")
 end, { range = true })
 
+-- Apply Chicago Style Header
+
