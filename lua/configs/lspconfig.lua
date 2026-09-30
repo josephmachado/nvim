@@ -17,6 +17,17 @@ vim.lsp.config.ruff = {
 }
 vim.lsp.enable("ruff")
 
+-- Elixir setup 
+vim.lsp.enable("expert")
+
+vim.lsp.config("expert", {
+  settings = {
+    workspaceSymbols = {
+      minQueryLength = 0
+    }
+  }
+})
+
 -- Pyright config - disable organize imports since Ruff handles it
 vim.lsp.config.pyright = {
   settings = {
