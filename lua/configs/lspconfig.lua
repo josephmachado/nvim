@@ -38,10 +38,11 @@ vim.lsp.config.pyright = {
 }
 
 -- Harper LS
--- vim.lsp.config.harper_ls = {
---   filetypes = { "markdown", "qmd", "txt", "python", "sh", "quarto" },
--- }
--- vim.lsp.enable("harper_ls")
+
+vim.lsp.enable("harper_ls")
+vim.lsp.config.harper_ls = {
+  filetypes = { "markdown", "qmd", "txt", "python", "sh", "quarto" },
+}
 
 -- ltex 
 -- vim.lsp.config.ltex = {
