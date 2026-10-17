@@ -50,5 +50,5 @@ vim.keymap.set('n', '<leader>tt', ':tabnew | terminal fish<CR>', { desc = 'Open 
 vim.keymap.set("n", "<leader>h", ":split | terminal fish<CR>", { desc = "Terminal fish (horizontal)" })
 vim.keymap.set("n", "<leader>v", ":vsplit | terminal fish<CR>", { desc = "Terminal fish (vertical)" })
 
-vim.keymap.set('n', '<leader>tl', ':tabnew | terminal fish<CR>', { desc = 'Open Lazygit in a new tab' })
+vim.keymap.set('n', '<leader>tl', ':tabnew | terminal lazygit<CR>', { desc = 'Open Lazygit in a new tab' })
 vim.keymap.set('n', '<leader>td', '<cmd>tabnew | DBUI<CR>', { desc = 'Open DBUI in a new tab' })
