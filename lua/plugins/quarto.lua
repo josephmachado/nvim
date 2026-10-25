@@ -50,9 +50,15 @@ end, { desc = "open python terminal" })
   vim.keymap.set("n", "<leader>tr", function()
     vim.cmd("vsplit term://R")
   end, { desc = "open R terminal" })
+
   vim.keymap.set("n", "<leader>tb", function()
     vim.cmd("vsplit term://bash")
   end, { desc = "open bash terminal" })
+
+  vim.keymap.set("n", "<leader>te", function()
+    vim.cmd("vsplit term://iex -S mix")
+  end, { desc = "open elixir terminal" })
+
   -- Add runner keymaps
   local runner = require("quarto.runner")
   vim.keymap.set("n", "<localleader>rc", runner.run_cell,  { desc = "run cell", silent = true })
