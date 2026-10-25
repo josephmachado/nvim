@@ -53,6 +53,16 @@ return {
       }
 
       dap.configurations.elixir = {
+
+        vim.tbl_extend("force", base, {
+          name = "phx.server",
+          task = "phx.server",
+          taskArgs = {},
+          startApps = false, -- phx.server starts the apps itself
+          exitAfterTaskReturns = false, -- keep the debugger attached while the server runs
+          env = { MIX_ENV = "dev" },
+        }),
+
         vim.tbl_extend("force", base, {
           name = "mix test: All",
           taskArgs = { "--trace" },
