@@ -11,6 +11,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+vim.opt.relativenumber = true
+
 local lazy_config = require "configs.lazy"
 
 vim.g.maplocalleader = ","   -- Set localleader
