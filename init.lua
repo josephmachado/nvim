@@ -45,3 +45,6 @@ end, { range = true })
 
 -- Apply Chicago Style Header
 
+-- Set thesaurus 
+--
+vim.o.thesaurus = "./en.ths"
