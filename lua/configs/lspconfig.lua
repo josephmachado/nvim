@@ -102,3 +102,18 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     vim.diagnostic.setqflist({ open = false })
   end,
 })
+
+-- Download the server again whenever vim.pack updates the plugin.
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    if ev.data.spec.name == 'org-lsp' and ev.data.kind == 'update' then
+      if not ev.data.active then
+        vim.cmd.packadd('org-lsp')
+      end
+      vim.cmd('OrgLspDownload')
+    end
+  end,
+})
+
+vim.g.org_lsp = { settings = { org_agenda_files = { '~/org' } } }
+vim.pack.add({ 'https://github.com/kristijanhusak/org-lsp' })
