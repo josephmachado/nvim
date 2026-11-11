@@ -45,6 +45,8 @@ end, { range = true })
 
 -- Apply Chicago Style Header
 
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true   -- optional: turn spell check on by default
 -- Set thesaurus 
 --
 vim.o.thesaurus = "./en.ths"
