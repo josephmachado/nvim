@@ -44,7 +44,6 @@ vim.api.nvim_create_user_command('CleanSort', function()
 end, { range = true })
 
 -- Apply Chicago Style Header
-
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true   -- optional: turn spell check on by default
 -- Set thesaurus 
