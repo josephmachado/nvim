@@ -1,4 +1,3 @@
--- ~/.config/nvim/lua/plugins/org.lua
 return {
   "xheisenbugx/org.nvim",
   main = "org",
@@ -7,5 +6,8 @@ return {
     org_directory = "~/org",
     agenda_files = { "~/org/**/*.org" },
     default_notes_file = "~/org/refile.org",
+    extensions = {
+      lsp = true,
+    }
   },
 }

@@ -49,3 +49,4 @@ vim.opt.spell = true   -- optional: turn spell check on by default
 -- Set thesaurus 
 --
 vim.o.thesaurus = "./en.ths"
+-- vim.lsp.enable('org')
