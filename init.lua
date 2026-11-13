@@ -43,9 +43,7 @@ vim.api.nvim_create_user_command('CleanSort', function()
   vim.cmd("'<,'>!sort | tr '[:upper:]' '[:lower:]' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | uniq -c | sort -nr")
 end, { range = true })
 
--- Apply Chicago Style Header
-vim.opt.spelllang = "en_us"
-vim.opt.spell = true   -- optional: turn spell check on by default
+-- Spell check + Chicago style: enabled per-filetype in lua/autocmds.lua
 -- Set thesaurus 
 --
 vim.o.thesaurus = "./en.ths"
