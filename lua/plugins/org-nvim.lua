@@ -25,10 +25,10 @@ return {
           template = table.concat({
             "* Monthly review",
             "  %U",
-            "  - What went well: %^{What went well}",
             "  - What could be better: %^{What could be better}",
+            "  - What went well: %^{What went well}",
             "  - What am I grateful for: %^{What am I grateful for}",
-            "  - Key priority this month: %^{One key priority this month}",
+            "  - Key priority for upcoming month: %^{One key priority upcoming month}",
           }, "\n"),
         },
         w = {
@@ -38,14 +38,14 @@ return {
           template = table.concat({
             "* Weekly review",
             "  %U",
-            "  - What went well: %^{What went well}",
             "  - What could be better: %^{What could be better}",
+            "  - What went well: %^{What went well}",
             "  - What am I grateful for: %^{What am I grateful for}",
-            "  - Key priority this week: %^{One key priority this week}",
+            "  - Key priority for upcoming week: %^{One key priority for upcoming week}",
           }, "\n"),
         },
         d = {
-          description = "Daily metrics",
+          description = "Daily metrics & review",
           target = "~/org/daily-metrics.org",
           datetree = true,
           template = table.concat({
@@ -55,6 +55,12 @@ return {
             "  - Diet: %^{Calories|%(meal-calories)} kcal",
             "  - Exercise: %^{Exercise|none|none|walk|run|gym|yoga|cycling}",
             "  - Mood: %^{Mood|3|1|2|3|4|5}",
+            "* Daily review",
+            "  %U",
+            "  - What could be better: %^{What could be better}",
+            "  - What went well: %^{What went well}",
+            "  - What am I grateful for: %^{What am I grateful for}",
+            "  - Key priority for tomorrow: %^{One key priority tomorrow}",
           }, "\n"),
         },
       },
