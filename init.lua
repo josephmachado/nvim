@@ -45,6 +45,7 @@ end, { range = true })
 
 -- Spell check + Chicago style: enabled per-filetype in lua/autocmds.lua
 -- Set thesaurus 
---
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
 vim.o.thesaurus = "./en.ths"
--- vim.lsp.enable('org')
+vim.lsp.enable('org')
