@@ -49,6 +49,16 @@ vim.lsp.enable({ "ruff", "ruff_otter" })
 -- Elixir setup
 vim.lsp.enable("elixirls")
 
+require("org").setup({
+  extensions = {
+    src_lsp = { languages = { "elixir", "python" } },
+  },
+  babel = {
+    languages = {
+      elixir = { cmd = "elixir", ext = "exs" },
+    },
+  },
+})
 -- vim.lsp.config("expert", {
 --   settings = {
 --     workspaceSymbols = {
