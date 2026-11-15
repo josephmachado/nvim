@@ -55,3 +55,8 @@ vim.keymap.set("n", "<leader>v", ":vsplit | terminal fish<CR>", { desc = "Termin
 
 vim.keymap.set('n', '<leader>tl', ':tabnew | terminal lazygit<CR>', { desc = 'Open Lazygit in a new tab' })
 vim.keymap.set('n', '<leader>td', '<cmd>tabnew | DBUI<CR>', { desc = 'Open DBUI in a new tab' })
+
+vim.keymap.set("n", "gV", function()
+  vim.cmd("vsplit")
+  vim.lsp.buf.definition()
+end, { desc = "Go to definition in vertical split" })

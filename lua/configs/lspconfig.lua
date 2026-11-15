@@ -51,7 +51,7 @@ vim.lsp.enable("elixirls")
 
 require("org").setup({
   extensions = {
-    src_lsp = { languages = { "elixir", "python" } },
+    src_lsp = { languages = { "elixir", "python" }, completion = false },
   },
   babel = {
     languages = {
