@@ -48,4 +48,4 @@ end, { range = true })
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 vim.o.thesaurus = "./en.ths"
-vim.lsp.enable('org')
+-- vim.lsp.enable('org')
