@@ -18,13 +18,13 @@ return {
 
     babel = {                                  -- top level, NOT inside extensions
       languages = {
-        elixir = { cmd = "elixir", ext = "exs" },
+        elixir = { cmd = "elixir"},
       },
     },
 
     extensions = {                             -- only real extensions go here
-      lsp = true,
-      src_lsp = { languages = { "elixir" } },
+      --lsp = true,
+      src_lsp = { languages = { "elixir", "python" } },
     },
   },
   config = function(_, opts)
