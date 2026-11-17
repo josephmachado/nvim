@@ -9,7 +9,7 @@ return {
     backends = { "treesitter", "lsp", "markdown", "asciidoc", "man" },
     layout = {
       default_direction = "right",
-      min_width = 30,
+      min_width = 40,
     },
     show_guides = true,
   },
