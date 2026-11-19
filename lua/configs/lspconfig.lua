@@ -6,12 +6,11 @@ vim.lsp.enable(servers)
 -- Ruff: one client for normal .py files (with hover + format on save),
 -- a second one for otter's hidden buffers in .qmd files (no hover, so pyright answers K)
 local function is_otter(bufnr)
-  return vim.api.nvim_buf_get_name(bufnr):match("%.otter%.%w+$") ~= nil
+  return vim.api.nvim_buf_get_name(bufnr):match "%.otter%.%w+$" ~= nil
 end
 
 local function ruff_root(bufnr)
-  return vim.fs.root(bufnr, { "pyproject.toml", "ruff.toml", ".ruff.toml", ".git" })
-    or vim.fn.getcwd()
+  return vim.fs.root(bufnr, { "pyproject.toml", "ruff.toml", ".ruff.toml", ".git" }) or vim.fn.getcwd()
 end
 
 vim.lsp.config.ruff = {
@@ -25,7 +24,7 @@ vim.lsp.config.ruff = {
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
       callback = function()
-        vim.lsp.buf.format({ async = false })
+        vim.lsp.buf.format { async = false }
       end,
     })
   end,
@@ -44,10 +43,10 @@ vim.lsp.config.ruff_otter = {
   end,
 }
 
-vim.lsp.enable({ "ruff", "ruff_otter" })
+vim.lsp.enable { "ruff", "ruff_otter" }
 
 -- Elixir setup
-vim.lsp.enable("elixirls")
+vim.lsp.enable "elixirls"
 
 -- vim.lsp.config("expert", {
 --   settings = {
@@ -68,9 +67,9 @@ vim.lsp.config.pyright = {
 
 -- Harper LS
 vim.lsp.config.harper_ls = {
-  filetypes = { "markdown", "qmd", "txt", "python", "sh", "quarto" },
+  filetypes = { "markdown", "qmd", "txt", "python", "sh", "quarto", "org" },
 }
-vim.lsp.enable("harper_ls")
+vim.lsp.enable "harper_ls"
 
 -- ltex
 -- vim.lsp.config.ltex = {
@@ -99,9 +98,17 @@ vim.lsp.enable("harper_ls")
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { "*.md", "*.qmd", "*.txt" },
   callback = function()
-    vim.diagnostic.setqflist({ open = false })
+    vim.diagnostic.setqflist { open = false }
   end,
 })
 
-vim.lsp.enable('org')
+vim.lsp.enable "org"
 
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    if vim.fs.root(0, "mix.exs") then
+      vim.opt_local.makeprg = "mix test"
+      vim.opt_local.errorformat = "%E  %n) %m,%Z %#%f:%l,%-G%.%#"
+    end
+  end,
+})
