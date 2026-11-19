@@ -67,7 +67,7 @@ vim.lsp.config.pyright = {
 
 -- Harper LS
 vim.lsp.config.harper_ls = {
-  filetypes = { "markdown", "qmd", "txt", "python", "sh", "quarto", "org" },
+  filetypes = { "markdown" },
 }
 vim.lsp.enable "harper_ls"
 
