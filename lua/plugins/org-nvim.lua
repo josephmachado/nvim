@@ -6,7 +6,7 @@ return {
     org_directory = "~/org",
     agenda_files = { "~/org/**/*.org" },
     default_notes_file = "~/org/refile.org",
-    todo_keywords = { "TODO(t) NEXT(n) | DONE(d)" },
+    todo_keywords = { "TODO(t) WIP(w) REVIEW(r) BLOCKED(b) | DONE(d)" },
     log_done = "time",
     log_into_drawer = true,
     -- startup_folded = "overview",
@@ -20,15 +20,15 @@ return {
       },
     },
 
-    babel = {                                  -- top level, NOT inside extensions
+    babel = { -- top level, NOT inside extensions
       languages = {
-        elixir = { cmd = "elixir"},
+        elixir = { cmd = "elixir" },
       },
     },
 
-    extensions = {                             -- only real extensions go here
+    extensions = { -- only real extensions go here
       --lsp = true,
-      src_lsp = { languages = { "elixir", "python"}},
+      src_lsp = { languages = { "elixir", "python" } },
       diagrams = { render_on_save = true },
     },
   },

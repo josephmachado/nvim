@@ -11,27 +11,27 @@ map("i", "jk", "<ESC>")
 
 -- Telescope: Find markdown files
 map("n", "<leader>fm", function()
-  require('telescope.builtin').find_files({
-    find_command = {'rg', '--files', '--glob', '*.md'}
-  })
+  require("telescope.builtin").find_files {
+    find_command = { "rg", "--files", "--glob", "*.md" },
+  }
 end, { desc = "Find markdown files" })
 
 -- Telescope: Search in markdown files
 map("n", "<leader>sm", function()
-  require('telescope.builtin').live_grep({
-    glob_pattern = '*.md'
-  })
+  require("telescope.builtin").live_grep {
+    glob_pattern = "*.md",
+  }
 end, { desc = "Search in markdown files" })
 
 -- add a word to Harper dictionary
-vim.keymap.set('n', '<leader>da', function()
-  local word = vim.fn.expand('<cword>')
-  local dict_path = vim.fn.expand('~/.config/harper-ls/dictionary.txt')
-  vim.fn.system('mkdir -p ~/.config/harper-ls')
+vim.keymap.set("n", "<leader>da", function()
+  local word = vim.fn.expand "<cword>"
+  local dict_path = vim.fn.expand "~/.config/harper-ls/dictionary.txt"
+  vim.fn.system "mkdir -p ~/.config/harper-ls"
   vim.fn.system(string.format('echo "%s" >> %s', word, dict_path))
   print('Added "' .. word .. '" to Harper dictionary')
-  vim.cmd('LspRestart harper_ls')
-end, { desc = 'Add word to Harper dictionary' })
+  vim.cmd "LspRestart harper_ls"
+end, { desc = "Add word to Harper dictionary" })
 
 map("n", "<leader>cd", "<cmd>CodeDiff<CR>", { desc = "Code Diffs" })
 
@@ -45,24 +45,24 @@ map("n", "<leader>du", "<cmd>DapViewToggle<CR>", { desc = "Toggle DAP view" })
 map("n", "<leader>dw", "<cmd>DapViewWatch<CR>", { desc = "Add expression to watch list" })
 map("n", "<leader>de", "<cmd>DapViewHover<CR>", { desc = "Evaluate expression under cursor" })
 map("n", "<leader>dr", "<cmd>DapViewJump repl<CR>", { desc = "Jump to debug REPL" })
-map("n", "<leader>dtn", function() require("dap-python").test_method() end, { desc = "Debug nearest test" })
-map("n", "<leader>dtc", function() require("dap-python").test_class() end, { desc = "Debug test class" })
-map("n", "<leader>dtf", function() require("dap-python").test_file() end, { desc = "Debug test file" })
+map("n", "<leader>dtn", function()
+  require("dap-python").test_method()
+end, { desc = "Debug nearest test" })
+map("n", "<leader>dtc", function()
+  require("dap-python").test_class()
+end, { desc = "Debug test class" })
+map("n", "<leader>dtf", function()
+  require("dap-python").test_file()
+end, { desc = "Debug test file" })
 
-vim.keymap.set('n', '<leader>tt', ':tabnew | terminal fish<CR>', { desc = 'Open terminal in new tab' })
+vim.keymap.set("n", "<leader>tt", ":tabnew | terminal fish<CR>", { desc = "Open terminal in new tab" })
 vim.keymap.set("n", "<leader>h", ":split | terminal fish<CR>", { desc = "Terminal fish (horizontal)" })
 vim.keymap.set("n", "<leader>v", ":vsplit | terminal fish<CR>", { desc = "Terminal fish (vertical)" })
 
-vim.keymap.set('n', '<leader>tl', ':tabnew | terminal lazygit<CR>', { desc = 'Open Lazygit in a new tab' })
-vim.keymap.set('n', '<leader>td', '<cmd>tabnew | DBUI<CR>', { desc = 'Open DBUI in a new tab' })
+vim.keymap.set("n", "<leader>tl", ":tabnew | terminal lazygit<CR>", { desc = "Open Lazygit in a new tab" })
+vim.keymap.set("n", "<leader>td", "<cmd>tabnew | DBUI<CR>", { desc = "Open DBUI in a new tab" })
 
 vim.keymap.set("n", "gV", function()
-  vim.cmd("vsplit")
+  vim.cmd "vsplit"
   vim.lsp.buf.definition()
 end, { desc = "Go to definition in vertical split" })
-
-vim.keymap.set("n", "<leader>O", function()
-  vim.cmd([[silent! lvimgrep /^\*\+ / %]])
-  vim.cmd("botright vertical lopen " .. math.floor(vim.o.columns * 0.3))
-  vim.cmd("wincmd p")
-end, { desc = "Org outline pane" })
