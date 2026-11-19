@@ -55,10 +55,20 @@ map("n", "<leader>dtf", function()
   require("dap-python").test_file()
 end, { desc = "Debug test file" })
 
-vim.keymap.set("n", "<leader>tt", ":tabnew | terminal fish<CR>", { desc = "Open terminal in new tab" })
-vim.keymap.set("n", "<leader>h", ":split | terminal fish<CR>", { desc = "Terminal fish (horizontal)" })
-vim.keymap.set("n", "<leader>v", ":vsplit | terminal fish<CR>", { desc = "Terminal fish (vertical)" })
+-- If fish shell unavailable fall back to zsh
+local term_shell = vim.fn.executable "fish" == 1 and "fish" or vim.fn.executable "zsh" == 1 and "zsh" or vim.o.shell
 
+vim.keymap.set("n", "<leader>tt", function()
+  vim.cmd("tabnew | terminal " .. term_shell)
+end, { desc = "Open terminal in new tab" })
+
+vim.keymap.set("n", "<leader>h", function()
+  vim.cmd("split | terminal " .. term_shell)
+end, { desc = "Terminal (horizontal)" })
+
+vim.keymap.set("n", "<leader>v", function()
+  vim.cmd("vsplit | terminal " .. term_shell)
+end, { desc = "Terminal (vertical)" })
 vim.keymap.set("n", "<leader>tl", ":tabnew | terminal lazygit<CR>", { desc = "Open Lazygit in a new tab" })
 vim.keymap.set("n", "<leader>td", "<cmd>tabnew | DBUI<CR>", { desc = "Open DBUI in a new tab" })
 
