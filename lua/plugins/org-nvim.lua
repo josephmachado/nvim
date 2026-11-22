@@ -2,6 +2,21 @@ return {
   "xheisenbugx/org.nvim",
   main = "org",
   lazy = false,
+  dependencies = { "hrsh7th/nvim-cmp" },
+  config = function(_, opts)
+    require("org").setup(opts)
+
+    local cmp = require "cmp"
+    cmp.register_source("org", require("org.completion.cmp").new())
+    cmp.setup.filetype("org", {
+      sources = {
+        { name = "org" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "async_path" },
+      },
+    })
+  end,
   opts = {
     org_directory = "~/org",
     agenda_files = { "~/org/**/*.org" },
@@ -32,11 +47,4 @@ return {
       diagrams = { render_on_save = true },
     },
   },
-  config = function(_, opts)
-    require("org").setup(opts)
-    require("org.capture").expansions["meal-calories"] = function(ctx)
-      local d = ctx.date or require("org.date").today()
-      return tostring(require("org_diet").calories_for(string.format("%04d-%02d-%02d", d.year, d.month, d.day)))
-    end
-  end,
 }

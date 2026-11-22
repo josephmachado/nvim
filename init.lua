@@ -15,7 +15,7 @@ vim.opt.relativenumber = true
 
 local lazy_config = require "configs.lazy"
 
-vim.g.maplocalleader = ","   -- Set localleader
+vim.g.maplocalleader = "," -- Set localleader
 -- load plugins
 require("lazy").setup({
   {
@@ -39,13 +39,12 @@ vim.schedule(function()
   require "mappings"
 end)
 
-vim.api.nvim_create_user_command('CleanSort', function()
-  vim.cmd("'<,'>!sort | tr '[:upper:]' '[:lower:]' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | uniq -c | sort -nr")
+vim.api.nvim_create_user_command("CleanSort", function()
+  vim.cmd "'<,'>!sort | tr '[:upper:]' '[:lower:]' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | uniq -c | sort -nr"
 end, { range = true })
 
 -- Spell check + Chicago style: enabled per-filetype in lua/autocmds.lua
--- Set thesaurus 
+-- Set thesaurus
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 vim.o.thesaurus = "./en.ths"
--- vim.lsp.enable('org')
