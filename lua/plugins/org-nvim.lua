@@ -21,7 +21,10 @@ return {
     org_directory = "~/org",
     agenda_files = { "~/org/**/*.org" },
     default_notes_file = "~/org/refile.org",
-    todo_keywords = { "TODO(t) WIP(w) REVIEW(r) BLOCKED(b) | DONE(d)" },
+    todo_keywords = {
+      "TODO(t) NEXT(n) WAITING(w) | DONE(d) CANCELLED(c)",
+      "REPORT(r) BUG(b) KNOWNCAUSE(k) | FIXED(f)",
+    },
     log_done = "time",
     log_into_drawer = true,
     -- startup_folded = "overview",
